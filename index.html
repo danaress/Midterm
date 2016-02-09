@@ -27,5 +27,46 @@
 
 <body ng-controller="myController">
 
+	<div class="background-image">
+		<img src="placeholder-1.jpg" class="image">
+	</div>
+
+<!-- 	<nav class="navbar navbar-default nav-color"> -->
+  	<div class="container-fluid">
+  		<div class="col-xs-12 login">
+  			<form class="form-inline user-login">
+  				<div class="form-group">
+  					<div class="hidden" id="login">
+   						<input type="text" class="form-control" placeholder="Username">
+   						<input type="text" ng-keypress="pressEnter($event)" class="form-control" placeholder="Password">
+   					</div>
+   				</div>
+				<button ng-click="loginSubmit()" class="btn btn-md btn-info login-button">Log In</button>
+			</form>
+		</div>
+  	</div>
+
+  	<div class="container-fluid">
+  		<form data-toggle="validator" class="col-xs-4 input-group inputEmail">
+  			<div class="form-group">
+  				<input ng-keypress="emailEnter($event)" for="inputEmail" type="email" class="form-control has-success email" placeholder="Enter your email to get started">
+  			</div>
+	  		<div id="signup" class="hidden">
+	  		<br>
+	  			<input type="text" class="form-control" placeholder="Username">
+	  		<br>
+
+	  			<input type="text" class="form-control" placeholder="Password">
+	  		<br>
+
+	  			<input type="text" class="form-control" placeholder="Zipcode">
+	  		<br>
+
+	  			<button class="btn btn-md btn-info" ng-click="pressSignUp()">Sign Up</button>
+  			</div>
+  		</form>
+<!-- 	  			<button ng-click="addItem()" type="submit" class="btn btn-default">Submit</button> -->
+	</div>
+
 </body>
 </html>

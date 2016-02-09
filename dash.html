@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Midterm Project</title>
+
+
+
+	<!-- jquery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+
+	<!-- angular -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
+
+	<!-- js -->
+	<script type="text/javascript" src="main.js"></script>
+
+	<!-- bootsrap.js -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js">
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+
+<body ng-controller="myController">
+
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+  </div>
+</nav> -->
+
+<div class="container">
+
+	<!-- Buttons to toggle between MY BIDS and ALL BIDS -->
+	<div class="sectionNav">
+  		<button ng-click="myBids()" class="btn btn-default">Add New Item</button>
+  		<button ng-click="allBids()" class="btn btn-default">Browse All Bids</button>
+	</div>
+
+	<!-- MY BIDS section -->
+
+	<div id="myBids" class="container hidden">
+		<form role="form">
+	  		<div class="form-group row">
+	  			<div class="col-xs-4">
+	    			<label for="title">Name of Item</label>
+	    			<input ng-model="Item.title" type="text" class="form-control" id="title">
+	    		</div>
+	 		</div>
+	 		<div class="form-group row">
+	 			<div class="col-xs-4">
+	 		 		<input ng-model="Item.description" type="text" class="form-control" placeholder="Description">
+	 		 	</div>
+	 		</div>
+	 		<div class="form-group row">
+	 			<div class="col-xs-4">
+	   				<label for="exampleInputFile">File input</label>
+	    			<input ng-model="Item.image" type="file" id="exampleInputFile" accept="image" name="img">
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="input-group col-xs-3">
+	  			
+	      			<div class="input-group-addon">$</div>
+	      			<input ng-model="Item.price" type="number" class="form-control" id="exampleInputAmount" placeholder="Amount">
+	      		</div>
+	      	</div>
+
+	    		<br>
+	  			<button ng-click="addItem()" type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+
+	<!-- All BIDS section -->
+<div id="allBids" class="hidden">
+		<div class="container col-xs-9 itemBox">
+			<div class="row">
+				<h2 class="col-xs-12">{{entry1.title}}</h2>
+			</div>
+			<div class="row">
+				<p class="col-xs-6">{{entry1.description}}</p>
+				<img class="itemImage col-xs-6" src={{entry1.image}}></img>				
+			</div>
+			<div class="row">
+				<p class="col-xs-6 img-thumbnail">Starting Bid ${{entry1.price}}</p>
+			</div>
+		</div>
+		<div class="container col-xs-3 bidBox">
+			<div class="row row1">Current Bid</div>
+			<div class="row row2">Place New bid</div>
+			<div class="row row3">Send Message</div>
+		</div>
+
+	<div class="activeItems">
+		<div ng-repeat="activeItems in allItems">
+
+				<div class="container col-xs-9 itemBox">
+			<div class="row">
+				<h2 class="col-xs-12">{{activeItems.title}}</h2>
+			</div>
+			<div class="row">
+				<p class="col-xs-6">{{activeItems.description}}</p>
+				<img class="itemImage col-xs-6" src={{activeItems.image}}></img>				
+			</div>
+			<div class="row">
+				<p class="col-xs-6">Starting Bid ${{activeItems.price}}</p>
+			</div>
+		</div>
+		<div class="container col-xs-3 bidBox">
+			<div class="row row1">Current Bid</div>
+			<div class="row row2">Place New bid</div>
+			<div class="row row3">Send Message</div>
+		</div>
+<!-- 			<h2>{{activeItems.title}}</h2>
+			<p>{{activeItems.description}}</p>
+			<p>{{activeItems.image}}</p>
+			<p>{{activeItems.price}}</p> -->
+		</div>
+	</div>
+	</div>
+</body>
+</html>
