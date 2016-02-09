@@ -15,11 +15,25 @@
 }
 
 .inputEmail{
+	border: none;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30%;
 	padding: 10px;
 	opacity: .9;
+	background-color: #fff;
+	border-radius: 7px;
+	-webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+	box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+}
+
+.signup-button{
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.email-spec{
+	border: none;
 }
 
 .login-button:hover {
@@ -34,9 +48,11 @@
 
 .itemBox{
 	border: 1px black solid;
+	margin: 25px;
 }
 .itemImage{
-	float: right;
+	height: 300px;
+	width: 300px;
 }
 .bidBox{
 	background-color: red;
@@ -55,3 +71,14 @@
 .balls{
 	text-align: left;
 }
+
+.profileInfo{
+	list-style-type: none;
+}
+.profpic{
+	height: 30%;
+	width: 30%;
+}
+
+
+
