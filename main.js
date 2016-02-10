@@ -101,7 +101,7 @@ $scope.addItem = function(){
 
 $scope.submitNewBid = function(){
 	console.log("Working");
-	console.log(oldTest.price)
+	console.log(oldTest.price[0])
 	// $scope.oldItems.price.unshift($scope.oldTest.newprice);
 	// $scope.oldTest.price = $scope.oldTest.$scope.testBids;
 }
