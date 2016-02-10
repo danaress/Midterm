@@ -82,7 +82,7 @@ var itemObject = function(title, description, image, price, category, date, user
 	this.title = title;
 	this.description = description;
 	this.image = image;
-	this.price = price;
+	this.price = [price];
 	this.category = category;
 	this.username = username;
 	this.zipcode = zipcode;
@@ -98,11 +98,19 @@ $scope.addItem = function(){
 	$scope.Item = {}
 }
 
+
+$scope.submitNewBid = function(){
+	console.log("Working");
+	console.log(oldTest.price)
+	// $scope.oldItems.price.unshift($scope.oldTest.newprice);
+	// $scope.oldTest.price = $scope.oldTest.$scope.testBids;
+}
+
 $scope.entry1 = new itemObject(
 	'test1',
 	'testy test',
 	'assets/imgres.jpg',
-	14,
+	[14],
 	'ski boots',
 	2/8/16,
 	'dana_ress',
@@ -113,7 +121,7 @@ $scope.entry2 = new itemObject(
 	'test2',
 	'testy entry2',
 	'assets/imgres.jpg',
-	14,
+	[14],
 	'ski boots',
 	2/8/16,
 	'dana_ress_no',
@@ -124,7 +132,7 @@ $scope.entry3 = new itemObject(
 	'test3',
 	'testy entry3',
 	'assets/imgres.jpg',
-	14,
+	[14],
 	'ski boots',
 	2/8/16,
 	'dana_ressno',
@@ -135,7 +143,7 @@ $scope.entry4 = new itemObject(
 	'test4',
 	'testy entry4',
 	'assets/imgres.jpg',
-	14,
+	[14],
 	'ski boots',
 	2/8/16,
 	'dana_ress',

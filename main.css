@@ -55,14 +55,15 @@
 	width: 300px;
 }
 .bidBox{
-	background-color: red;
+	border: 1px solid black;
 }
 
 .row1{
 	background-color: blue;
 }
 .row2{
-	background-color: green;
+	margin: 10px;
+	border: 2px solid #5bc0de;
 }
 .row3{
 	background-color: yellow;
@@ -80,5 +81,8 @@
 	width: 30%;
 }
 
+.tableRows{
+	font-weight: 700;
+}
 
 
