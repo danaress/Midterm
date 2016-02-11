@@ -134,6 +134,10 @@ $scope.submitNewBid = function(oldTest){
 }
 }
 
+$scope.test = function(){
+
+}
+
 // $scope.tableRow.diff = ($scope.tableRow.price[0] - $scope.tableRow.price[$scope.tableRow.price.length - 1])
 
 
@@ -444,6 +448,14 @@ $scope.boardBoots3 = new itemObjs(
 	Size:	28.5}
 )
 
+
+function filtertest(){
+	$scope.filtered = _.filter($scope.newItems, function(obj){
+	return obj.category == 'Skis';
+})
+	console.log($scope.filtered);
+}
+	filtertest();
 
 $scope.danasItems = []
 
