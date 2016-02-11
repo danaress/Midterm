@@ -11,17 +11,17 @@
 	<!-- angular -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
 
-	<!-- js -->
-	<script type="text/javascript" src="main.js"></script>
-
 	<!-- Underscore -->
 	<script type="text/Javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
 
 	<!-- bootsrap.js -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js">
+	<script rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
 
 	<!-- bootstrap -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+
+	<!-- js -->
+	<script type="text/javascript" src="main.js"></script>
 
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="main.css">
@@ -35,17 +35,31 @@
   </div>
 </nav> -->
 
-<div class="container">
+<div class="container container1">
+
+ 	<div class="container-fluid">
+  		<div class="col-xs-12 login">
+  			<div class="col-xs-1">
+  				<img ng-click="home()" class="logo" src="assets/logo.png">
+  			</div>
+  			<div class="col-xs-5">
+  				<h3>Outdoor Gear Exchange</h3>
+  			</div>
+  			<div class="col-xs-4 col-xs-offset-2 sectionNav">
+				<button ng-click="myAccount()" class="btn btn-default btn-info">My Account</button>
+  				<button ng-click="allBids()" class="btn btn-default btn-success">Browse All Bids</button>
+			</div>
+  		</div>
+
+  	</div>
 
 	<!-- Buttons to toggle between MY BIDS and ALL BIDS -->
-	<div class="sectionNav">
-		<button ng-click="myAccount()" class="btn btn-default">My Account</button>
-  		<button ng-click="allBids()" class="btn btn-default">Browse All Bids</button>
-	</div>
 
 	<!-- MY ACCOUNT -->
 
 	<div id="myAccount" class="container hidden">
+
+
 		<div class="row">
 			<div class="col-xs-6">
 				<img class="img-thumbnail img-responsive profpic" src="assets/profilePic.jpg">
@@ -106,27 +120,28 @@
 		  			<button ng-click="addItem()" type="submit" class="btn btn-default">Submit</button>
 			</form>
 		</div>
-	<!-- Add Bid Form Ends -->
+	<!-- Add Bid Form Ends & MY Items Starts -->
 
-	<div ng-repeat="newitems in matches">
+		<div ng-repeat="myItems in matches">
 
 		<div class="container col-xs-5 itemBox">
 			<div class="row">
-				<h2 class="col-xs-3">{{newitems.title}}</h2>
+				<h2 class="itemTitle col-xs-12">{{myItems.title}}</h2>
 			</div>
-
 			<div class="row">
-				<p class="col-xs-3">{{newitems.description}}</p>
-				<img class="itemImage col-xs-9 itemImage" ng-src="{{newitems.image}}"></img>				
+				<p class="col-xs-4 originalPrice">Starting Bid ${{myItems.price[0]}}</p>
+				<br>
+				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
+
 			</div>
-
-
 			<div class="row">
-				<p class="col-xs-6">Starting Bid ${{newitems.price[0]}}</p>
-			</div>
-
+				<img class="itemImage col-xs-6 itemImage" ng-src="{{myItems.image}}"></img>
+				<div class="baseline">
+					<h2 ng-model="oldTest.newPrice">Current Bid: ${{oldTest.price[0]}}.00</h2>
+				</div>
+			</div>			
+			
 		</div>
-
 	</div>
 	</div>
 
@@ -139,54 +154,80 @@
 <!-- New Items added through My Account page -->	
 		<div ng-repeat="activeItems in allItems">
 
-			<div class="container col-xs-5 itemBox">
+		<div class="container col-xs-5 itemBox">
 			<div class="row">
-				<h2 class="col-xs-3">{{activeItems.title}}</h2>
+				<h2 class="itemTitle col-xs-12">{{activeItems.title}}</h2>
 			</div>
-
 			<div class="row">
-				<p class="col-xs-3">{{activeItems.description}}</p>
-				<img class="itemImage col-xs-9 itemImage" ng-src="{{activeItems.image}}"></img>				
+				<p class="col-xs-4 originalPrice">Starting Bid ${{activeItems.price}}</p>
+				<br>
+				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
+
 			</div>
 
-			<div class="row">
-				<p class="col-xs-6">Starting Bid ${{activeItems.price[0]}}</p>
-			</div>
+				<img class="itemImage col-xs-6 itemImage" ng-src="{{activeItems.image}}"></img>				
+		
 
-			<div class="container col-xs-3 bidBox">
-				<div class="row row1">Current Bid</div>
-				<div class="row row2">Place New bid</div>
+			<div class="row priceinfo">
+				<div class="col-xs-12">
+					<div class="">{{oldTest.price[0]}}</div>
+						<form>
+						<input ng-bind="newprice" class="row" placeholder="New Bid"></input>
+						<button ng-click="submitNewBid()" class="btn">Submit Bid</button>
+						</form>
+					</div>
+				</div>
 			</div>
-
-		</div>
 		</div>
 	</div>
 
 <!-- Legacy Items Preloaded in JS -->
-	<div ng-repeat="oldTest in oldItems">
+	<div ng-repeat="oldTest in newItems">
 
 		<div class="container col-xs-5 itemBox">
 			<div class="row">
-				<h2 class="col-xs-3">{{oldTest.title}}</h2>
+				<h2 class="itemTitle col-xs-12">{{oldTest.title}}</h2>
+			</div>
+			<div class="row">
+				<p class="col-xs-4 originalPrice">Starting Bid ${{oldTest.price[oldTest.price.length - 1]}}</p>
+				<br>
+				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
+
 			</div>
 
 			<div class="row">
-				<p class="col-xs-3">{{oldTest.description}}</p>
-				<img class="itemImage col-xs-9 itemImage" ng-src="{{oldTest.image}}"></img>			
+				<img data-toggle="modal" data-target="#myModal-{{$index}}" class="col-xs-6 itemImage img-thumbnail img-responsive imghover" ng-src="{{oldTest.image}}"></img>
+
+					<div class="modal fade" id="myModal-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  						<div class="modal-dialog" role="document">
+    						 <div class="modal-content">
+    						 	<img ng-src="{{oldTest.image}}">
+    						 </div>
+  						</div>
+					</div>
+
+					<div class="col-xs-6">			
+						<table class="details1 table">
+							<tr ng-repeat="(key, value) in details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+							</tr>
+						</table>
+					</div>
+			</div>
+	
+			<div class="row priceinfo">
+				<div class="col-xs-12">
+					<div class="currentBid">Current Bid: ${{oldTest.price[0]}}.00</div>
+						<form class="bidSubmit">
+							<input ng-model="oldTest.newPrice" class="row" placeholder="New Bid"></input>
+							<button ng-click="submitNewBid(oldTest)" class="bidSubmit btn">Submit Bid</button>
+						</form>
+					</div>
+				</div>
 			</div>
 
-			<div class="row">
-				<p class="col-xs-6">Starting Bid ${{oldTest.price[0]}}</p>
-			</div>
-
-			<div class="container col-xs-3 bidBox">
-				<div class="row row1">{{oldTest.price[0]}}</div>
-				<form>
-				<input ng-bind="oldTest.newprice" class="row row2" placeholder="Place New Bid"></input>
-				<button ng-click="submitNewBid()" class="btn">Submit Bid</button>
-				</form>
-			</div>
-		</div>
+	</div>
 
 	</div>
 	</div>
