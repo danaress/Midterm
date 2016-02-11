@@ -34,7 +34,7 @@
 }
 
 .filters{
-	background-color: gray;
+	background-color: silver;
 }
 
 .btn1{
@@ -167,6 +167,26 @@
 	float: right;
 }
 
+.balls{
+	height: auto;
+	max-width: 400px;
+	text-align: center;
+}
+
+.btn-special{
+	background-color: gold;
+	margin-bottom: 10px;
+}
+
+.modal-border{
+	border: 2px #4E9689 solid;
+	border-radius: 8px;
+}
+
+.spacing{
+	margin-top: 10px;
+}
+
 .table-specs{
 	margin-top: 20px;
 	border: 5px solid #4E9689;
@@ -179,13 +199,12 @@
 	padding-top: 10px;
 	bottom: 0px;
 	width: 100%;
-	border: 1px solid black;
-	background-color: #ffb19a;
+	background-color: #87D69B;
 	color: black;
 }
 
 .moreInfo{
-	font-size: 8px;
+	font-size: 12px;
 }
 
 .currentBid{
@@ -196,10 +215,6 @@
 .bidSubmit{
 	margin-left: 15px;
 	margin-bottom: 5px;
-}
-
-.moreinfo{
-	background-color: red;
 }
 
 .imghover:hover{

@@ -88,6 +88,15 @@ $scope.checkFile = function(element){
     });
 }
 
+$scope.addDetails = function(){
+		$("#details").removeClass('hidden');
+}
+
+
+$scope.moreInfo = function(){
+	$("#moreinfo").removeClass('hidden');
+}
+
 // Adding new items to array
 
 $scope.modalClick = function($index){
@@ -115,7 +124,7 @@ var itemObject = function(title, description, image, price, category, date, user
 }
 
 $scope.addItem = function(){
-	$scope.allItems.push($scope.Item);
+	$scope.newItems.unshift($scope.Item);
 	$scope.Item.image = ("assets/" + $scope.myFile.name);
 	console.log($scope.allItems);
 	console.log("works");
@@ -152,7 +161,7 @@ var itemObjs = function(title, description, image, price, category, date, userna
 	this.date = date;
 	this.username = username;
 	this.zipcode = zipcode;
-	this.details = {details};
+	this.details = details;
 	$scope.newItems.push(this)
 }
 
@@ -161,7 +170,7 @@ $scope.boots1 = new itemObjs(
 	"These boots were used in a mountain rental program for a few seasons. The boots have a lot of scuffs and scratches as you would expect on a used boot. There are color sized plates from the rental program on the back of the boot. Plates colors vary by size.",
 	"http://i.ebayimg.com/images/g/JTsAAOSw~bFWHDLn/s-l1600.jpg",
 	59,
-	'Ski Boots',
+	'SkiBoots',
 	2/10/16,
 	'dana_ress',
 	80027,
@@ -178,7 +187,7 @@ $scope.boots2 = new itemObjs(
 	"These boots were used in a large ski shop rental and lease program for a few seasons. The boots have a lot of scuffs and scratches. The logo may be partially worn off on most boots.",
 	"http://i.ebayimg.com/images/g/BPIAAOSw5VFWH8Rs/s-l1600.jpg",
 	65,
-	"Ski Boots",
+	"SkiBoots",
 	2/10/16,
 	"matt_ray",
 	80301,
@@ -196,7 +205,7 @@ $scope.boots3 = new itemObjs(
     "These boots were used in a large ski shop rental and lease program for a few seasons. The boots have a lot of scuffs and scratches. The logo may be partially worn off on most boots.",
 	"http://i.ebayimg.com/images/g/BPIAAOSw5VFWH8Rs/s-l1600.jpg",
 	49,
-	"Ski Boots",
+	"SkiBoots",
 	2/10/16,
 	"tom_lovett",
 	80302,
@@ -213,7 +222,7 @@ $scope.boots4 = new itemObjs(
 	"These boots were used in a mountain ski resortrental program for three seasons. The boots have a lot scuffs and scratches as you would expect on a used boot. They were well used but still have life left. The boots are all half sizes based on the infomation found on the back of the plastic shell. However, the resort has labeled the boots with mondo full sizing on the toe in either permanent ink or engraved numbers. Please see our photo for sample of engraved and ink mondo nummbers. Please note that although the toes are marked with full sizes, the boots are all half sizes.",
 	"http://i.ebayimg.com/images/g/lYUAAOSwA4dWJlmq/s-l1600.jpg",
 	40,
-    "Ski Boots",
+    "SkiBoots",
 	2/10/2016,
 	"valentin__",
 	80302,
@@ -230,7 +239,7 @@ $scope.boots5 = new itemObjs(
 	"These boots were used in a mountain ski shop rental program for two seasons. On the back of the boot there are some numbers and letters engraved into the plastic. The boots have lots of scuffs and scratches. Additionally the logos will be partially worn off on most ski boots.",
 	"http://i.ebayimg.com/images/g/TvIAAOSwl9BWGxg7/s-l1600.jpg",
 	55,
-	"Ski Boots",
+	"SkiBoots",
 	2/10/2016,
  	"__fatima",
  	80301,
@@ -389,7 +398,7 @@ $scope.boardBoots1 = new itemObjs(
 	"This is a Used Salomon Kamooks Snowboard boot. This is a great durable all around boot. It has a simple single lacing system where you pull up on the handle, cinch down the lock and then just tuck the handle and extra laces into the side of the boot. Its a great all around boot at a great price, plus you can skip renting and waiting in long lines. The colors are All Brown or Black or Black Blue. The All Black Boots have different colored pull tabs and trim. The tabs and trim were used by rental programs to distinguish sizes. The various color are Red, Blue, Black, Yellow. etc. We can not take color choice. Your boots will come as a matching set with the different colored trim and pull tabs.",
 	"http://i.ebayimg.com/images/g/BWMAAOSwZG9Wl7gc/s-l1600.jpg",
 	40,
-	"Snowboard Boots",
+	"BoardBoots",
 	2/10/2016,
 	"dana_ress",
 	80302,
@@ -405,7 +414,7 @@ $scope.boardBoots2 = new itemObjs(
 	"This is a used K2 Raider Boa Rental Black Mens Snowboard boot. This boot features Boa Coiler lacing system on the outer boot and the inner boot liner has a lacing system where you pull up on the handles, cinch down the locks and then just tuck extra laces into the side of the boot. This gives you a nice tight and snug fit for great control of your board as you hit the moguls and halfpipe.",
 	"http://i.ebayimg.com/images/g/xrYAAOSwKIpWDYF8/s-l1600.jpg",
 	50,
-	"Snowboard Boots",
+	"BoardBoots",
 	2/10/2016,
 	"matt_ray",
 	80303,
@@ -421,7 +430,7 @@ $scope.boardBoots3 = new itemObjs(
 	"This is a used Burton Lodi Womens Snowboard boot. These boots have a two liner system with an outside lacing system and an inside lacing system. The outside laces are a simple tie sytem. The inner lace system works where you pull up on the lace lock, cinch down the locks and then just tuck extra laces into the side of the boot. This gives you a nice tight and snug fit for great control of your board as you hit the moguls and halfpipe.",
 	"http://i.ebayimg.com/images/g/AjMAAOSwX~dWsLPG/s-l1600.jpg",
 	55,
-	"Snowboard Boots",
+	"BoardBoots",
 	2/10/2016,
 	"tom_lovett",
 	80027,
@@ -437,7 +446,7 @@ $scope.boardBoots3 = new itemObjs(
 	"This is a used K2 Raider Boa Rental Black Men's Snowboard boot. This boot features Boa Coiler lacing system on the outer boot and the inner boot liner has a lacing system where you pull up on the handles, cinch down the locks and then just tuck extra laces into the side of the boot. This gives you a nice tight and snug fit for great control of your board as you hit the moguls and halfpipe. This boot has a K2 flex rating of 6.",
 	"http://i.ebayimg.com/images/g/ZCkAAOSwB4NWuj9a/s-l1600.jpg",
 	59,
-	"Snowboard Boots",
+	"BoardBoots",
 	2/10/2016,
 	"__evan",
 	80025,
@@ -448,14 +457,79 @@ $scope.boardBoots3 = new itemObjs(
 	Size:	28.5}
 )
 
+$scope.categoriesList = ["Ski", "Snowboard"];
 
-function filtertest(){
-	$scope.filtered = _.filter($scope.newItems, function(obj){
-	return obj.category == 'Skis';
-})
-	console.log($scope.filtered);
+$scope.updateFilter = function(category) {
+	console.log("Works");
+	if ($scope.categoriesFilter == category) {
+		$scope.categoriesFilter = "";
+	} else {
+		$scope.categoriesFilter = category;
+	}
 }
-	filtertest();
+var sorted = "";
+
+$scope.sort = function(){
+	console.log("works");
+	$scope.sorted = "'price'";
+}
+
+
+
+// function filtered(){
+// 	for (var i=0; i < 1; i++){
+// 		if ($scope.check.ski == true){
+// 			$("#Skis").removeClass('hidden')
+// 		} else if ($scope.check.ski == false){
+// 			$("#Skis").addClass('hidden')
+// 		}
+// 	}
+// }
+
+// function filtered2(){
+// 	for (var i=0; i < 1; i++){
+// 		if ($scope.check.skiboot == true){
+// 			$("#SkiBoots").removeClass('hidden')
+// 		} else if ($scope.check.ski == false){
+// 			$("#SkiBoots").addClass('hidden')
+// 		}
+// 	}
+// }
+
+// function filtered3(){
+// 	for (var i=0; i < 1; i++){
+// 		if ($scope.check.board == true){
+// 			$("#Snowboard").removeClass('hidden')
+// 		} else if ($scope.check.ski == false){
+// 			$("#Snowboard").addClass('hidden')
+// 		}
+// 	}
+// }
+
+// function filtered4(){
+// 	for (var i=0; i < 1; i++){
+// 		if ($scope.check.boardboot == true){
+// 			$("#BoardBoots").removeClass('hidden')
+// 		} else if ($scope.check.ski == false){
+// 			$("#BoardBoots").addClass('hidden')
+// 		}
+// 	}
+// }
+
+
+
+// $scope.ski = function(){
+// 	filtered();
+// }
+// $scope.skiboot = function(){
+// 	filtered2();
+// }
+// $scope.board = function(){
+// 	filtered3();
+// }
+// $scope.boardboot = function(){
+// 	filtered4();
+// }
 
 $scope.danasItems = []
 

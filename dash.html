@@ -72,54 +72,70 @@
 						<td>Title</td>
 						<td>Starting Price</td>
 						<td>Current Bid</td>
-						<td>Activity</td>
+
 					</tr>
 					<tr ng-repeat="tableRow in matches">
 						<td>{{tableRow.title}}</td>
 						<td>${{tableRow.price[tableRow.price.length - 1]}}</td>
 						<td>${{tableRow.price[0]}}</td>
-						<td ng-model="tableRow.diff">Gotta build this</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		<div class="row">
-			<button ng-click="addBid()" class="btn btn-default submitButton">Add New Item</button>
-			<button id="cancelBid" ng-click="cancelBid()" class="btn btn-xs btn-danger hidden">Cancel</button>
+			<button data-toggle="modal" data-target="#myModal" ng-click="addBid()" class="btn btn-default submitButton">Add New Item</button>
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  					<div class="modal-dialog modal-border" role="document">
+    						<div class="modal-content">
+						 		<div id="myBids" class="container hidden">
+									<form role="form">
+								  		<div class="form-group row">
+								  			<div class="col-xs-4">
+								    			<input ng-model="Item.title" type="text" class="form-control spacing" placeholder="Name of Item" id="title">
+								    		</div>
+								 		</div>
+								 		<div class="form-group row">
+								 			<div class="col-xs-4">
+								 		 		<input ng-model="Item.description" type="text" class="form-control" placeholder="Description">
+								 		 		<input ng-model="Item.username" type="hidden" style="{display: 'hidden'}" class="form-control" value="dana_ress">
+								 		 	</div>
+								 		</div>
+								 		<div class="form-group row">
+								 			<div class="col-xs-4">
+								   				<label for="exampleInputFile">File input</label>
+								    			<input ng-model="Item.image" id="imageinput" onchange="angular.element(this).scope().checkFile(this)" type="file" required>
+								    		</div>
+								  		</div>
+								  		<div class="row">
+								  			<div class="input-group col-xs-3">
+								  			
+								      			<div class="input-group-addon">$</div>
+								      			<input ng-model="Item.price" type="number" class="form-control" id="exampleInputAmount" placeholder="Amount">
+								      		</div>
+								      	</div>
+								      		<button ng-click="addDetails()" class="spacing btn btn-info">Add More Details</button>
+								    			<div class="row">
+
+								    				<div id="details" class="col-xs-4 hidden spacing">
+								    					<input ng-model="Item.details.Manufacturer" type="text" class="form-control" placeholder="Manufacturer" id="title">
+								    					<input ng-model="Item.details.Model" type="text" class="form-control spacing" placeholder="Model Name" id="title">
+								    					<input ng-model="Item.details.Color" type="text" class="form-control spacing" placeholder="Color" id="title">
+								    					<input ng-model="Item.details.Level" type="text" class="form-control spacing" placeholder="Experience Level" id="title">
+								    					<input ng-model="Item.details.Size" type="text" class="form-control spacing" placeholder="Size" id="title">
+								    				</div>
+								    			</div>
+								    		<div class="col-xs-3">
+								  			<button ng-click="addItem()" type="submit" class="btn btn-default btn-special spacing">Submit</button>
+								  			</div>
+									</form>
+								</div>   						 	
+    						</div>
+  					</div>
+				</div>
+<!-- 			<button id="cancelBid" ng-click="cancelBid()" class="btn btn-xs btn-danger hidden">Cancel</button> -->
 		</div>
 	<!-- Add Bid Form Start -->
-		<div id="myBids" class="container hidden">
-			<form role="form">
-		  		<div class="form-group row">
-		  			<div class="col-xs-4">
-		    			<label for="title">Name of Item</label>
-		    			<input ng-model="Item.title" type="text" class="form-control" placeholder="Name of Item" id="title">
-		    		</div>
-		 		</div>
-		 		<div class="form-group row">
-		 			<div class="col-xs-4">
-		 		 		<input ng-model="Item.description" type="text" class="form-control" placeholder="Description">
-		 		 		<input ng-model="Item.username" type="hidden" style="{display: 'hidden'}" class="form-control" value="dana_ress">
-		 		 	</div>
-		 		</div>
-		 		<div class="form-group row">
-		 			<div class="col-xs-4">
-		   				<label for="exampleInputFile">File input</label>
-		    			<input ng-model="Item.image" id="imageinput" onchange="angular.element(this).scope().checkFile(this)" type="file" required>
-		    		</div>
-		  		</div>
-		  		<div class="row">
-		  			<div class="input-group col-xs-3">
-		  			
-		      			<div class="input-group-addon">$</div>
-		      			<input ng-model="Item.price" type="number" class="form-control" id="exampleInputAmount" placeholder="Amount">
-		      		</div>
-		      	</div>
 
-		    		<br>
-		  			<button ng-click="addItem()" type="submit" class="btn btn-default">Submit</button>
-			</form>
-		</div>
 	<!-- Add Bid Form Ends & MY Items Starts -->
 
 		<div ng-repeat="myItems in matches">
@@ -154,16 +170,25 @@
 
 
   	<div class="filters col-xs-12">
-  		<form class="form-inline">
-  			<input data-toggle="checkboxes" type="checkbox" checked>Skis</from>
-  			<input type="checkbox" checked>Ski Boots</from>
-  			<input type="checkbox" checked>Snowboards</from>
-  			<input type="checkbox" checked>Snowboard Boots</from>
-  		</form>	
+  	<form class="form-inline">
+  		<div class="form-group">
+  		<div ng-repeat="category in categoriesList">
+			<input type="checkbox" ng-click="updateFilter(category)"><span>{{category}}</span><br>
+		</div>
+		</div>
+
+				<div class="form-group">
+					<input type="search" ng-model="searchText" placeholder="Search"></input>
+				</div>
+				<div class="form-group">
+<!-- 				 	<button ng-click="sort()">High to Low</button> -->
+				 </div>
+		</div>
+		</form>	
   	</div>
 
 <!-- New Items added through My Account page -->	
-		<div ng-repeat="activeItems in allItems">
+<!-- 		<div ng-repeat="activeItems in newItems">
 
 		<div class="container col-xs-5 itemBox hidden">
 			<div class="row">
@@ -173,11 +198,17 @@
 				<p class="col-xs-4 originalPrice">Starting Bid ${{activeItems.price}}</p>
 				<br>
 				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
-
 			</div>
 
 				<img class="itemImage col-xs-6 itemImage" ng-src="{{activeItems.image}}"></img>				
-		
+				<div class="col-xs-6">			
+					<table class="moreInfo table">
+						<tr ng-repeat="(key, value) in activeItems.details">
+							<td>{{key}}</td>
+							<td>{{value}}</td>
+						</tr>
+					</table>
+				</div>
 
 			<div class="row priceinfo">
 				<div class="col-xs-12">
@@ -190,19 +221,21 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
+	
 
 <!-- Legacy Items Preloaded in JS -->
-	<div ng-repeat="oldTest in newItems">
+	<div ng-repeat="oldTest in newItems | filter:categoriesFilter | filter:searchText"s>
 
-		<div class="container col-xs-5 itemBox">
+		<div id="{{oldTest.category}}" class="container col-xs-5 itemBox">
 			<div class="row">
 				<h2 class="itemTitle col-xs-12">{{oldTest.title}}</h2>
 			</div>
 			<div class="row">
 				<p class="col-xs-4 originalPrice">Starting Bid ${{oldTest.price[oldTest.price.length - 1]}}</p>
 				<br>
-				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
+				<button ng-click="moreInfo()" class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
 
 			</div>
 
@@ -212,13 +245,13 @@
 					<div class="modal fade" id="myModal-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   						<div class="modal-dialog" role="document">
     						 <div class="modal-content">
-    						 	<img ng-src="{{oldTest.image}}">
+    						 	<img class="balls" ng-src="{{oldTest.image}}">
     						 </div>
   						</div>
 					</div>
 
 					<div class="col-xs-6">			
-						<table class="moreInfo">
+						<table class="moreInfo table">
 							<tr ng-repeat="(key, value) in oldTest.details">
 								<td>{{key}}</td>
 								<td>{{value}}</td>
