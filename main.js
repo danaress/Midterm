@@ -95,8 +95,6 @@ $scope.modalClick = function($index){
 	console.log("working");
 }
 
-
-
 $scope.allItems = []
 $scope.Item = {}
 $scope.oldItems = []
@@ -124,7 +122,6 @@ $scope.addItem = function(){
 	$scope.Item = {}
 }
 
-
 $scope.submitNewBid = function(oldTest){
 	console.log("Working");
 	if (oldTest.newPrice > oldTest.price[oldTest.price.length -1]){
@@ -136,6 +133,9 @@ $scope.submitNewBid = function(oldTest){
 	oldTest.newPrice = '';
 }
 }
+
+// $scope.tableRow.diff = ($scope.tableRow.price[0] - $scope.tableRow.price[$scope.tableRow.price.length - 1])
+
 
 // -------------NEW OBJECTS-------------
 

@@ -67,7 +67,7 @@
 				<h4>Boulder, CO</h4>
 			</div>
 			<div class="col-xs-6">
-				<table class="table table-striped table-responsive table-bordered">
+				<table class="table table-striped table-responsive table-bordered table-specs">
 					<tr class="tableRows">
 						<td>Title</td>
 						<td>Starting Price</td>
@@ -76,9 +76,9 @@
 					</tr>
 					<tr ng-repeat="tableRow in matches">
 						<td>{{tableRow.title}}</td>
+						<td>${{tableRow.price[tableRow.price.length - 1]}}</td>
 						<td>${{tableRow.price[0]}}</td>
-						<td>Gotta build this</td>
-						<td>Gotta build this</td>
+						<td ng-model="tableRow.diff">Gotta build this</td>
 					</tr>
 				</table>
 			</div>
@@ -129,7 +129,7 @@
 				<h2 class="itemTitle col-xs-12">{{myItems.title}}</h2>
 			</div>
 			<div class="row">
-				<p class="col-xs-4 originalPrice">Starting Bid ${{myItems.price[0]}}</p>
+				<p class="col-xs-4 originalPrice">Starting Bid ${{myItems.price[myItems.price.length -1]}}</p>
 				<br>
 				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
 
@@ -137,8 +137,9 @@
 			<div class="row">
 				<img class="itemImage col-xs-6 itemImage" ng-src="{{myItems.image}}"></img>
 				<div class="baseline">
-					<h2 ng-model="oldTest.newPrice">Current Bid: ${{oldTest.price[0]}}.00</h2>
+					<h3 class="col-xs-10">Current Bid: ${{myItems.price[0]}}.00</h3>
 				</div>
+
 			</div>			
 			
 		</div>
