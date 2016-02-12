@@ -4,11 +4,9 @@
 }*/
 
 
-
-
-
 .login{
 	background-color: white;
+	width: 100%;
 }
 
 .logo{
@@ -16,10 +14,14 @@
 }
 
 .tagLine{
+	width: 100%;
 	position: relative;
 	text-align: center;
 	margin-top: 15%;
 	font-weight: 700;
+}
+.tag{
+	font-size: 48px;
 }
 
 .navbuttons{
@@ -82,6 +84,10 @@
 	border: none;
 }
 
+.login-button{
+	margin-top: 5px;
+}
+
 .login-button:hover {
 	color: #e6e6e6;
 }
@@ -137,6 +143,7 @@
 
 .tableRows{
 	font-weight: 700;
+	margin-top: 25px;
 }
 
 .originalPrice{
@@ -174,7 +181,6 @@
 }
 
 .btn-special{
-	background-color: gold;
 	margin-bottom: 10px;
 }
 

@@ -47,7 +47,7 @@
   			</div>
   			<div class="col-xs-4 col-xs-offset-2 sectionNav">
 				<button ng-click="myAccount()" class="btn btn-default btn-info">My Account</button>
-  			<button ng-click="allBids()" class="btn btn-default btn-success">Browse All Bids</button>
+  			<button ng-click="allBids()" class="btn btn-default btn-success">Browse All Items</button>
 			</div>
   		</div>
 
@@ -69,7 +69,7 @@
 			<div class="col-xs-6">
 				<table class="table table-striped table-responsive table-bordered tableRows">
 					<tr class="tableRows">
-						<td>Title</td>
+						<td>Item</td>
 						<td>Starting Price</td>
 						<td>Current Bid</td>
 
@@ -83,7 +83,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<button data-toggle="modal" data-target="#myModal" ng-click="addBid()" class="btn btn-default submitButton">Add New Item</button>
+			<button data-toggle="modal" data-target="#myModal" ng-click="addBid()" class="btn btn-warning submitButton">Add New Item</button>
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   					<div class="modal-dialog modal-border" role="document">
     						<div class="modal-content">
@@ -122,10 +122,11 @@
 								    					<input ng-model="Item.details.Color" type="text" class="form-control spacing" placeholder="Color" id="title">
 								    					<input ng-model="Item.details.Level" type="text" class="form-control spacing" placeholder="Experience Level" id="title">
 								    					<input ng-model="Item.details.Size" type="text" class="form-control spacing" placeholder="Size" id="title">
+								    					<input ng-model="Item.username" type="text" class="form-control spacing" placeholder="username" id="title">
 								    				</div>
 								    			</div>
 								    		<div class="col-xs-3">
-								  			<button ng-click="addItem()" type="submit" class="btn btn-default btn-special spacing">Submit</button>
+								  			<button ng-click="addItem()" type="submit" class="btn btn-warning btn-special spacing">Submit</button>
 								  			</div>
 									</form>
 								</div>   						 	
@@ -138,6 +139,40 @@
 
 	<!-- Add Bid Form Ends & MY Items Starts -->
 
+
+		<div ng-repeat="myOtherItems in matches1">
+
+		<div class="container col-xs-5 itemBox">
+			<div class="row">
+				<h2 class="itemTitle col-xs-12">{{myOtherItems.title}}</h2>
+			</div>
+			<div class="row">
+				<p class="col-xs-4 originalPrice">Starting Bid ${{myOtherItems.price}}</p>
+				<br>
+<!-- 				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button> -->
+
+			</div>
+			<div class="row">
+				<img class="itemImage col-xs-6 itemImage" ng-src="{{myOtherItems.image}}"></img>
+				<div class="baseline">
+					<h3 class="col-xs-10">Current Bid: ${{myOtherItems.price}}.00</h3>
+				</div>
+				<div class="col-xs-6">			
+						<table class="moreInfo table">
+							<tr ng-repeat="(key, value) in myItems.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+							</tr>
+						</table>
+					</div>
+			</div>			
+			
+		</div>
+	</div>
+
+
+
+
 		<div ng-repeat="myItems in matches">
 
 		<div class="container col-xs-5 itemBox">
@@ -147,7 +182,7 @@
 			<div class="row">
 				<p class="col-xs-4 originalPrice">Starting Bid ${{myItems.price[myItems.price.length -1]}}</p>
 				<br>
-				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
+<!-- 				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button> -->
 
 			</div>
 			<div class="row">
@@ -155,7 +190,14 @@
 				<div class="baseline">
 					<h3 class="col-xs-10">Current Bid: ${{myItems.price[0]}}.00</h3>
 				</div>
-
+				<div class="col-xs-6">			
+						<table class="moreInfo table">
+							<tr ng-repeat="(key, value) in myItems.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+							</tr>
+						</table>
+					</div>
 			</div>			
 			
 		</div>
@@ -188,40 +230,50 @@
   	</div>
 
 <!-- New Items added through My Account page -->	
-<!-- 		<div ng-repeat="activeItems in newItems">
+		<div ng-repeat="activeItems in newerItems">
 
-		<div class="container col-xs-5 itemBox hidden">
+		<div id="{{activeItems.category}}" class="container col-xs-5 itemBox">
 			<div class="row">
 				<h2 class="itemTitle col-xs-12">{{activeItems.title}}</h2>
 			</div>
 			<div class="row">
 				<p class="col-xs-4 originalPrice">Starting Bid ${{activeItems.price}}</p>
 				<br>
-				<button class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
+<!-- 				<button ng-click="moreInfo()" class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button> -->
+
 			</div>
 
-				<img class="itemImage col-xs-6 itemImage" ng-src="{{activeItems.image}}"></img>				
-				<div class="col-xs-6">			
-					<table class="moreInfo table">
-						<tr ng-repeat="(key, value) in activeItems.details">
-							<td>{{key}}</td>
-							<td>{{value}}</td>
-						</tr>
-					</table>
-				</div>
+			<div class="row">
+				<img data-toggle="modal" data-target="#myModal-{{$index}}" class="col-xs-6 itemImage img-thumbnail img-responsive imghover" ng-src="{{activeItems.image}}"></img>
 
+					<div class="modal fade" id="myModal-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  						<div class="modal-dialog" role="document">
+    						 <div class="modal-content">
+    						 	<img class="balls" ng-src="{{activeItems.image}}">
+    						 </div>
+  						</div>
+					</div>
+
+					<div class="col-xs-6">			
+						<table class="moreInfo table">
+							<tr ng-repeat="(key, value) in activeItems.details">
+								<td>{{key}}</td>
+								<td>{{value}}</td>
+							</tr>
+						</table>
+					</div>
+			</div>
+	
 			<div class="row priceinfo">
 				<div class="col-xs-12">
-					<div class="">{{oldTest.price[0]}}</div>
-						<form>
-						<input ng-bind="newprice" class="row" placeholder="New Bid"></input>
-						<button ng-click="submitNewBid()" class="btn">Submit Bid</button>
+					<div class="currentBid">Current Bid: ${{activeItems.price}}.00</div>
+						<form class="bidSubmit">
+							<input ng-model="activeItems.newPrice" class="row" placeholder="New Bid"></input>
+							<button ng-click="submitNewBid(activeItems)" class="bidSubmit btn btn-warning">Submit Bid</button>
 						</form>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div> -->
 
 	
 
@@ -235,7 +287,7 @@
 			<div class="row">
 				<p class="col-xs-4 originalPrice">Starting Bid ${{oldTest.price[oldTest.price.length - 1]}}</p>
 				<br>
-				<button ng-click="moreInfo()" class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button>
+<!-- 				<button ng-click="moreInfo()" class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button> -->
 
 			</div>
 
@@ -265,7 +317,7 @@
 					<div class="currentBid">Current Bid: ${{oldTest.price[0]}}.00</div>
 						<form class="bidSubmit">
 							<input ng-model="oldTest.newPrice" class="row" placeholder="New Bid"></input>
-							<button ng-click="submitNewBid(oldTest)" class="bidSubmit btn">Submit Bid</button>
+							<button ng-click="submitNewBid(oldTest)" class="bidSubmit btn btn-warning">Submit Bid</button>
 						</form>
 					</div>
 				</div>

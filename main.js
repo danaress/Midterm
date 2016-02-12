@@ -104,7 +104,7 @@ $scope.modalClick = function($index){
 	console.log("working");
 }
 
-$scope.allItems = []
+$scope.newerItems = []
 $scope.Item = {}
 $scope.oldItems = []
 $scope.newItems = []
@@ -124,10 +124,10 @@ var itemObject = function(title, description, image, price, category, date, user
 }
 
 $scope.addItem = function(){
-	$scope.newItems.unshift($scope.Item);
+	console.log($scope.Item);
+	$scope.newerItems.unshift($scope.Item);
 	$scope.Item.image = ("assets/" + $scope.myFile.name);
-	console.log($scope.allItems);
-	console.log("works");
+	sortTest1();
 	$scope.Item = {}
 }
 
@@ -532,6 +532,14 @@ $scope.sort = function(){
 // }
 
 $scope.danasItems = []
+
+function sortTest1(){
+	$scope.matches1 = _.filter($scope.newerItems, function(obj){
+	return obj.username == 'dana_ress';
+})
+	// $scope.danasItems.push(matches);
+	console.log($scope.matches);
+}
 
 function sortTest(){
 	$scope.matches = _.filter($scope.newItems, function(obj){
