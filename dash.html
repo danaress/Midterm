@@ -133,7 +133,7 @@
     						</div>
   					</div>
 				</div>
-<!-- 			<button id="cancelBid" ng-click="cancelBid()" class="btn btn-xs btn-danger hidden">Cancel</button> -->
+				<h3 class="forsale">My Items For Sale:</h3>
 		</div>
 	<!-- Add Bid Form Start -->
 
@@ -207,7 +207,7 @@
 	<!-- All BIDS section -->
 
 <div id="allBids" class="hidden container">
-<div class="row">
+<div class="row bigbox">
 	<div class="activeItems">
 
 
@@ -215,15 +215,15 @@
   	<form class="form-inline">
   		<div class="form-group">
   		<div ng-repeat="category in categoriesList">
-			<input type="checkbox" ng-click="updateFilter(category)"><span>{{category}}</span><br>
+			<input type="checkbox" class="" ng-click="updateFilter(category)"><span> {{category}}</span><br>
 		</div>
 		</div>
 
 				<div class="form-group">
-					<input type="search" ng-model="searchText" placeholder="Search"></input>
+					<input type="search" ng-model="searchText" class="form-control filterSearch" placeholder="Search"></input>
 				</div>
 				<div class="form-group">
-<!-- 				 	<button ng-click="sort()">High to Low</button> -->
+
 				 </div>
 		</div>
 		</form>	
@@ -239,7 +239,7 @@
 			<div class="row">
 				<p class="col-xs-4 originalPrice">Starting Bid ${{activeItems.price}}</p>
 				<br>
-<!-- 				<button ng-click="moreInfo()" class="col-xs-4 col-xs-offset-4 btn btn-sm btn-info">More Info</button> -->
+
 
 			</div>
 
@@ -274,11 +274,11 @@
 					</div>
 				</div>
 			</div>
-
+</div>
 	
 
 <!-- Legacy Items Preloaded in JS -->
-	<div ng-repeat="oldTest in newItems | filter:categoriesFilter | filter:searchText"s>
+	<div ng-repeat="oldTest in newItems | filter:categoriesFilter | filter:searchText">
 
 		<div id="{{oldTest.category}}" class="container col-xs-5 itemBox">
 			<div class="row">
