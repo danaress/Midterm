@@ -16,6 +16,13 @@
 	height: 50px;
 }
 
+.coname{
+	font-size: 14px;
+}
+.letter{
+	font-size: 22px;
+}
+
 .tagLine{
 	width: 100%;
 	position: relative;
